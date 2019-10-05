@@ -26,10 +26,14 @@
     border-radius: 4px
     box-shadow: 0 1px 4px rgba(0, 0, 0, .1), 0 0 6px rgba( 0, 0, 0, .04)
     color: black
-    display: inline-flex
+    display: flex
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
     padding: .75rem 1.5rem
     pointer-events: auto
+    position: relative
+
+    &:not(:last-child)
+        margin-bottom: 1rem
 
 .ss-close
     +button
