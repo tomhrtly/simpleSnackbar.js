@@ -7,15 +7,14 @@
     font-size: 100%
     line-height: 1.15
     margin: 0
-    padding: 0
     overflow: visible
+    padding: 0
     text-transform: none
 
 .ss-snackbars
-    height: 100vh
-    right: 0
-    position: absolute
-    top: 0
+    position: fixed
+    right: 1rem
+    top: 1rem
 
 .ss-container
     position: relative
@@ -23,26 +22,25 @@
 .ss-snackbar
     backdrop-filter: blur(2px)
     background-color: rgba(255, 255, 255, .9)
-    border-radius: 4px
     box-shadow: 0 1px 4px rgba(0, 0, 0, .1), 0 0 6px rgba( 0, 0, 0, .04)
-    color: black
+    color: #4a4a4a
     display: flex
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
-    padding: .75rem 1.5rem
     pointer-events: auto
-    position: relative
 
     &:not(:last-child)
         margin-bottom: 1rem
 
+.ss-snackbar-body
+    flex-grow: 1
+    padding: 1.5rem
+
 .ss-close
     +button
+    align-items: center
     display: inline-flex
     justify-content: center
-    align-items: center
-    position: absolute
-    top: .25rem
-    right: .25rem
+    padding: 1.5rem 1rem
 
     .ss-icon
         color: rgba(0, 0, 0, .4)
@@ -54,3 +52,6 @@
         svg
             height: 100%
             width: 100%
+
+    &:hover .ss-icon
+        color: rgba(0, 0, 0, .8)
