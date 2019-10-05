@@ -11,15 +11,28 @@
     padding: 0
     text-transform: none
 
+@keyframes simpleSnackbar
+    from
+        transform: translate3d(110%, 0, 0)
+    to
+        transform: translate3d(0, 0, 0)
+
+*
+    box-sizing: border-box
+
+    &::after,
+    &::before
+        box-sizing: border-box
+
 .ss-snackbars
     position: fixed
     right: 1rem
     top: 1rem
-
-.ss-container
-    position: relative
+    width: 350px
 
 .ss-snackbar
+    animation-duration: .4s
+    animation-name: simpleSnackbar
     backdrop-filter: blur(2px)
     background-color: rgba(255, 255, 255, .9)
     box-shadow: 0 1px 4px rgba(0, 0, 0, .1), 0 0 6px rgba( 0, 0, 0, .04)
@@ -46,7 +59,6 @@
         color: rgba(0, 0, 0, .4)
         display: inline-flex
         height: 1rem
-        justify-content: center
         width: 1rem
 
         svg
