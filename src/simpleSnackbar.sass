@@ -1,3 +1,7 @@
+$white: #fff
+$black: #000
+$gray: #4a4a4a
+
 =button
     -webkit-appearance: button
     background-color: transparent
@@ -26,9 +30,9 @@
 
 .ss-snackbar
     backdrop-filter: blur(2px)
-    background-color: rgba(255, 255, 255, .9)
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .1), 0 0 6px rgba( 0, 0, 0, .04)
-    color: #4a4a4a
+    background-color: rgba($white, .9)
+    box-shadow: 0 1px 4px rgba($black, .1), 0 0 6px rgba($black, .04)
+    color: $gray
     display: flex
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
     pointer-events: auto
@@ -55,7 +59,7 @@
     padding: 1.5rem 1rem
 
     .ss-icon
-        color: rgba(0, 0, 0, .4)
+        color: rgba($black, .4)
         display: inline-flex
         height: 1rem
         width: 1rem
@@ -65,4 +69,4 @@
             width: 100%
 
     &:hover .ss-icon
-        color: rgba(0, 0, 0, .8)
+        color: rgba($black, .8)
