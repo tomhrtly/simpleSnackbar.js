@@ -4,6 +4,7 @@ class simpleSnackbar {
         this.message = message;
         this.defaults = {
             type: 'default',
+            transitionSpeed: 250,
         };
         this.options = simpleSnackbar.extend(this.defaults, options);
 
@@ -17,29 +18,15 @@ class simpleSnackbar {
         this.init();
     }
 
-    init() {
-        const snackbars = document.querySelector('.ss-snackbars');
-        const snackbar = document.createElement('div');
-        const close = document.createElement('button');
+    hide() {
+        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
 
-        snackbar.classList.add('ss-snackbar');
-        snackbar.setAttribute('role', 'alert');
-        snackbar.setAttribute('aria-live', 'assertive');
-        snackbar.setAttribute('aria-atomic', 'true');
-        snackbar.setAttribute('data-id', this.id.toString());
-        snackbar.classList.add(`ss-snackbar-${this.options.type}`);
-        snackbar.innerHTML = `<div class="ss-snackbar-body">${this.message}</div>`;
+        snackbar.classList.remove('ss-snackbar-active');
+        setTimeout(() => {
+            snackbar.style.display = 'none';
+        }, this.options.transitionSpeed);
 
-        close.classList.add('ss-close');
-        close.innerHTML = '<span class="ss-icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></span>';
-        close.addEventListener('click', () => {
-            this.hide();
-        });
-
-        snackbar.append(close);
-        snackbars.append(snackbar);
-
-        this.icon();
+        return this;
     }
 
     icon() {
@@ -66,18 +53,53 @@ class simpleSnackbar {
         }
     }
 
-    show() {
-        setTimeout(() => {
-            document.querySelector(`.ss-snackbar[data-id="${this.id}"`).classList.add('ss-snackbar-active');
-        }, 100);
+    init() {
+        const snackbars = document.querySelector('.ss-snackbars');
+        const snackbar = document.createElement('div');
+        const close = document.createElement('button');
+
+        snackbar.classList.add('ss-snackbar');
+        snackbar.setAttribute('role', 'alert');
+        snackbar.setAttribute('aria-live', 'assertive');
+        snackbar.setAttribute('aria-atomic', 'true');
+        snackbar.setAttribute('data-id', this.id.toString());
+        snackbar.classList.add(`ss-snackbar-${this.options.type}`);
+        snackbar.style.transition = `all ${this.options.transitionSpeed}ms ease-in-out 0s`;
+        snackbar.innerHTML = `<div class="ss-snackbar-body">${this.message}</div>`;
+
+        close.classList.add('ss-close');
+        close.innerHTML = '<span class="ss-icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></span>';
+        close.addEventListener('click', () => {
+            this.hide();
+        });
+
+        snackbar.append(close);
+        snackbars.append(snackbar);
+
+        this.icon();
     }
 
-    hide() {
-        document.querySelector(`.ss-snackbar[data-id="${this.id}"`).classList.remove('ss-snackbar-active');
+    show() {
+        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
+
+        snackbar.style.display = '';
+        setTimeout(() => {
+            snackbar.classList.add('ss-snackbar-active');
+        }, 100);
+
+        return this;
     }
 
     toggle() {
-        document.querySelector(`.ss-snackbar[data-id="${this.id}"`).classList.toggle('ss-snackbar-active');
+        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
+
+        if (snackbar.classList.contains('ss-snackbar-active')) {
+            this.hide();
+        } else {
+            this.show();
+        }
+
+        return this;
     }
 
     static extend(defaults, options) {
