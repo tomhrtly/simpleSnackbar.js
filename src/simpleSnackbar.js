@@ -2,7 +2,10 @@ class simpleSnackbar {
     constructor(message, options) {
         this.id = Math.floor(Math.random() * 1000000);
         this.message = message;
-        this.options = options;
+        this.defaults = {
+            type: 'default',
+        };
+        this.options = simpleSnackbar.extend(this.defaults, options);
 
         const snackbars = document.createElement('div');
         snackbars.classList.add('ss-snackbars');
@@ -24,6 +27,7 @@ class simpleSnackbar {
         snackbar.setAttribute('aria-live', 'assertive');
         snackbar.setAttribute('aria-atomic', 'true');
         snackbar.setAttribute('data-id', this.id.toString());
+        snackbar.classList.add(`ss-snackbar-${this.options.type}`);
         snackbar.innerHTML = `<div class="ss-snackbar-body">${this.message}</div>`;
 
         close.classList.add('ss-close');
@@ -48,6 +52,32 @@ class simpleSnackbar {
 
     toggle() {
         document.querySelector(`.ss-snackbar[data-id="${this.id}"`).classList.toggle('ss-snackbar-active');
+    }
+
+    static extend(defaults, options) {
+        const extended = {};
+
+        if (defaults) {
+            const keys = Object.keys(defaults);
+
+            keys.forEach((value) => {
+                if (Object.prototype.hasOwnProperty.call(defaults, value)) {
+                    extended[value] = defaults[value];
+                }
+            });
+        }
+
+        if (options) {
+            const keys = Object.keys(options);
+
+            keys.forEach((value) => {
+                if (Object.prototype.hasOwnProperty.call(options, value)) {
+                    extended[value] = options[value];
+                }
+            });
+        }
+
+        return extended;
     }
 }
 
