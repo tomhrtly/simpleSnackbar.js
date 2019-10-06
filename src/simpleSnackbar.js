@@ -8,12 +8,14 @@ class simpleSnackbar {
         };
         this.options = simpleSnackbar.extend(this.defaults, options);
 
-        const snackbars = document.createElement('div');
-        snackbars.classList.add('ss-snackbars');
-        snackbars.setAttribute('aria-live', 'polite');
-        snackbars.setAttribute('aria-atomic', 'true');
+        if (!document.querySelector('.ss-snackbars')) {
+            const snackbars = document.createElement('div');
+            snackbars.classList.add('ss-snackbars');
+            snackbars.setAttribute('aria-live', 'polite');
+            snackbars.setAttribute('aria-atomic', 'true');
 
-        document.querySelector('body').append(snackbars);
+            document.querySelector('body').append(snackbars);
+        }
 
         this.init();
     }
