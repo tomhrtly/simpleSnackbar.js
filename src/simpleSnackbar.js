@@ -1,3 +1,13 @@
+/*
+ * simpleSnackbar.js v1.0.0
+ * https://github.com/tomhrtly/simpleSnackbar.js
+ *
+ * Copyright 2019 Tom Hartley
+ * Released under the MIT license
+ *
+ * Icons provided by Font Awesome: https://fontawesome.com
+ */
+
 class simpleSnackbar {
     constructor(message, options) {
         this.id = Math.floor(Math.random() * 1000000);
