@@ -58,6 +58,20 @@ class simpleSnackbar {
                 }
             }, 5000);
         }
+
+        snackbar.onfocus = () => {
+            if (document.activeElement === snackbar) {
+                document.onkeyup = (e) => {
+                    if (e.key === 'Escape') {
+                        this.hide();
+                    }
+                };
+            }
+        };
+
+        snackbar.onblur = () => {
+            document.onkeyup = () => {};
+        };
     }
 
     hide() {
@@ -89,6 +103,7 @@ class simpleSnackbar {
         const close = document.createElement('button');
 
         snackbar.classList.add('ss-snackbar');
+        snackbar.setAttribute('tabindex', '0');
         snackbar.setAttribute('role', 'alert');
         snackbar.setAttribute('aria-live', 'assertive');
         snackbar.setAttribute('aria-atomic', 'true');
