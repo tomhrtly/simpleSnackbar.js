@@ -11,6 +11,7 @@
 class simpleSnackbar {
     constructor(message, options) {
         this.id = Math.floor(Math.random() * 1000000);
+        this.element = '';
         this.message = message;
 
         this.defaults = {
@@ -25,6 +26,13 @@ class simpleSnackbar {
             transitionSpeed: 250,
         };
         this.options = simpleSnackbar.extend(this.defaults, options);
+
+        this.customEvents = {
+            hide: new CustomEvent('hide'),
+            hidden: new CustomEvent('hidden'),
+            show: new CustomEvent('show'),
+            shown: new CustomEvent('shown'),
+        };
 
         this.timer = null;
 
@@ -41,19 +49,18 @@ class simpleSnackbar {
     }
 
     events() {
-        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
         let pause = false;
 
         document.addEventListener('visibilitychange', () => {
             pause = document.visibilityState !== 'visible';
         });
 
-        snackbar.addEventListener('mouseenter', () => { pause = true; });
-        snackbar.addEventListener('mouseleave', () => { pause = false; });
-        snackbar.addEventListener('focusin', () => { pause = true; });
-        snackbar.addEventListener('focusout', () => { pause = false; });
+        this.element.addEventListener('mouseenter', () => { pause = true; });
+        this.element.addEventListener('mouseleave', () => { pause = false; });
+        this.element.addEventListener('focusin', () => { pause = true; });
+        this.element.addEventListener('focusout', () => { pause = false; });
 
-        snackbar.querySelector('.ss-close').addEventListener('click', () => {
+        this.element.querySelector('.ss-close').addEventListener('click', () => {
             this.hide();
         });
 
@@ -69,8 +76,8 @@ class simpleSnackbar {
             }, 5000);
         }
 
-        snackbar.onfocus = () => {
-            if (document.activeElement === snackbar) {
+        this.element.onfocus = () => {
+            if (document.activeElement === this.element) {
                 document.onkeyup = (e) => {
                     if (e.key === 'Escape') {
                         this.hide();
@@ -79,17 +86,16 @@ class simpleSnackbar {
             }
         };
 
-        snackbar.onblur = () => {
+        this.element.onblur = () => {
             document.onkeyup = () => {};
         };
     }
 
     hide() {
-        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
+        this.element.classList.remove('ss-snackbar-active');
 
-        snackbar.classList.remove('ss-snackbar-active');
         setTimeout(() => {
-            snackbar.style.display = 'none';
+            this.element.style.display = 'none';
         }, this.options.transitionSpeed);
 
         return this;
@@ -97,13 +103,12 @@ class simpleSnackbar {
 
     icon() {
         if (this.options.type !== 'default') {
-            const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
             const icon = document.createElement('div');
 
             icon.classList.add('ss-snackbar-icon');
             icon.innerHTML = `<span class="ss-icon">${this.options.icons[this.options.type]}</span>`;
 
-            snackbar.prepend(icon);
+            this.element.prepend(icon);
         }
     }
 
@@ -121,6 +126,7 @@ class simpleSnackbar {
         snackbar.classList.add(`ss-snackbar-${this.options.type}`);
         snackbar.style.transition = `all ${this.options.transitionSpeed}ms ease-in-out 0s`;
         snackbar.innerHTML = `<div class="ss-snackbar-body">${this.message}</div>`;
+        this.element = snackbar;
 
         close.classList.add('ss-close');
         close.innerHTML = '<span class="ss-icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></span>';
@@ -128,26 +134,25 @@ class simpleSnackbar {
         snackbar.append(close);
         snackbars.prepend(snackbar);
 
+        this.events();
         this.icon();
     }
 
     show() {
-        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
+        this.element.style.display = '';
 
-        snackbar.style.display = '';
         setTimeout(() => {
-            snackbar.classList.add('ss-snackbar-active');
+            this.element.classList.add('ss-snackbar-active');
+            this.element.dispatchEvent(this.customEvents.shown);
         }, 100);
 
-        this.events();
+        this.element.dispatchEvent(this.customEvents.show);
 
         return this;
     }
 
     toggle() {
-        const snackbar = document.querySelector(`.ss-snackbar[data-id="${this.id}"`);
-
-        if (snackbar.classList.contains('ss-snackbar-active')) {
+        if (this.element.classList.contains('ss-snackbar-active')) {
             this.hide();
         } else {
             this.show();
