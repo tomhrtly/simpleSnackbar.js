@@ -92,11 +92,16 @@ class simpleSnackbar {
     }
 
     hide() {
-        this.element.classList.remove('ss-snackbar-active');
+        if (this.element.classList.contains('ss-snackbar-active')) {
+            this.element.classList.remove('ss-snackbar-active');
 
-        setTimeout(() => {
-            this.element.style.display = 'none';
-        }, this.options.transitionSpeed);
+            setTimeout(() => {
+                this.element.style.display = 'none';
+                this.element.dispatchEvent(this.customEvents.hidden);
+            }, this.options.transitionSpeed);
+
+            this.element.dispatchEvent(this.customEvents.hide);
+        }
 
         return this;
     }
@@ -139,14 +144,19 @@ class simpleSnackbar {
     }
 
     show() {
-        this.element.style.display = '';
+        if (!this.element.classList.contains('ss-snackbar-active')) {
+            this.element.style.display = '';
 
-        setTimeout(() => {
-            this.element.classList.add('ss-snackbar-active');
-            this.element.dispatchEvent(this.customEvents.shown);
-        }, 100);
+            setTimeout(() => {
+                this.element.classList.add('ss-snackbar-active');
 
-        this.element.dispatchEvent(this.customEvents.show);
+                setTimeout(() => {
+                    this.element.dispatchEvent(this.customEvents.shown);
+                }, this.options.transitionSpeed);
+            }, 100);
+
+            this.element.dispatchEvent(this.customEvents.show);
+        }
 
         return this;
     }
