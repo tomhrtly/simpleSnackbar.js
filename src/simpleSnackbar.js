@@ -12,6 +12,7 @@ class simpleSnackbar {
     constructor(message, options) {
         this.container = '';
         this.customEvents = {
+            disposed: new CustomEvent('disposed'),
             hide: new CustomEvent('hide'),
             hidden: new CustomEvent('hidden'),
             show: new CustomEvent('show'),
@@ -44,9 +45,16 @@ class simpleSnackbar {
 
             document.querySelector('body').append(snackbars);
             this.container = snackbars;
+        } else {
+            this.container = document.querySelector('.ss-snackbars');
         }
 
         this.init();
+    }
+
+    dispose() {
+        this.element.parentNode.removeChild(this.element);
+        this.element.dispatchEvent(this.customEvents.disposed);
     }
 
     events() {
@@ -90,6 +98,18 @@ class simpleSnackbar {
         this.element.onblur = () => {
             document.onkeyup = () => {};
         };
+
+        this.element.addEventListener('show', () => {
+            if (this.container.children.length) {
+                this.container.classList.add('ss-snackbars-active');
+            }
+        });
+
+        this.element.addEventListener('disposed', () => {
+            if (!this.container.children.length) {
+                this.container.classList.remove('ss-snackbars-active');
+            }
+        });
     }
 
     hide() {
@@ -99,6 +119,7 @@ class simpleSnackbar {
             setTimeout(() => {
                 this.element.style.display = 'none';
                 this.element.dispatchEvent(this.customEvents.hidden);
+                this.dispose();
             }, this.options.transitionSpeed);
 
             this.element.dispatchEvent(this.customEvents.hide);
