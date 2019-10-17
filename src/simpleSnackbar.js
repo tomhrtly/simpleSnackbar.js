@@ -10,9 +10,13 @@
 
 class simpleSnackbar {
     constructor(message, options) {
-        this.id = Math.floor(Math.random() * 1000000);
-        this.element = '';
-        this.message = message;
+        this.container = '';
+        this.customEvents = {
+            hide: new CustomEvent('hide'),
+            hidden: new CustomEvent('hidden'),
+            show: new CustomEvent('show'),
+            shown: new CustomEvent('shown'),
+        };
 
         this.defaults = {
             autohide: true,
@@ -25,15 +29,11 @@ class simpleSnackbar {
             type: 'default',
             transitionSpeed: 250,
         };
+
+        this.element = '';
+        this.id = Math.floor(Math.random() * 1000000);
+        this.message = message;
         this.options = simpleSnackbar.extend(this.defaults, options);
-
-        this.customEvents = {
-            hide: new CustomEvent('hide'),
-            hidden: new CustomEvent('hidden'),
-            show: new CustomEvent('show'),
-            shown: new CustomEvent('shown'),
-        };
-
         this.timer = null;
 
         if (!document.querySelector('.ss-snackbars')) {
@@ -43,6 +43,7 @@ class simpleSnackbar {
             snackbars.setAttribute('aria-atomic', 'true');
 
             document.querySelector('body').append(snackbars);
+            this.container = snackbars;
         }
 
         this.init();
