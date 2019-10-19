@@ -43,10 +43,14 @@ $ss-danger: $ss-red !default
         box-sizing: border-box
 
 .ss-snackbars
+    display: none
     position: fixed
     right: 1rem
     top: 1rem
     width: 350px
+
+    &.ss-snackbars-active
+        display: block
 
 .ss-snackbar-icon
     align-items: center
