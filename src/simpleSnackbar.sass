@@ -7,6 +7,7 @@
  *
  */
 
+$ss-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $ss-white: #fff !default
 $ss-black: #000 !default
 $ss-blue: #209cee !default
@@ -15,6 +16,7 @@ $ss-light-gray: #c7c7c7 !default
 $ss-dark-gray: #4a4a4a !default
 $ss-yellow: #ffdd57 !default
 $ss-red: #ff3860 !default
+$ss-width: 350px !default
 
 $ss-default: $ss-light-gray !default
 $ss-success: $ss-green !default
@@ -47,7 +49,7 @@ $ss-danger: $ss-red !default
     position: fixed
     right: 1rem
     top: 1rem
-    width: 350px
+    width: $ss-width
 
     &.ss-snackbars-active
         display: block
@@ -87,8 +89,8 @@ $ss-danger: $ss-red !default
     box-shadow: 0 1px 4px rgba($ss-black, .1), 0 0 6px rgba($ss-black, .04)
     color: $ss-dark-gray
     display: flex
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
-    padding: 1rem
+    font-family: $ss-font-family
+    padding: 1.5rem 1rem
     pointer-events: auto
     transform: translate3d(110%, 0, 0)
     visibility: hidden
