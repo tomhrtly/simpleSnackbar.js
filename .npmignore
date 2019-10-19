@@ -9,5 +9,6 @@ test
 .idea
 .stylelintrc
 CODE_OF_CONDUCT.md
-rollup.config.js
+rollup.main.config.js
+rollup.docs.config.js
 package-lock.json
