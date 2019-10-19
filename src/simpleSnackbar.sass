@@ -24,6 +24,8 @@ $ss-info: $ss-blue !default
 $ss-warning: $ss-yellow !default
 $ss-danger: $ss-red !default
 
+$ss-colors: ("default": $ss-default, "success": $ss-success, "info": $ss-info, "warning": $ss-warning, "danger": $ss-danger)
+
 =button
     -webkit-appearance: button
     background-color: transparent
@@ -102,35 +104,12 @@ $ss-danger: $ss-red !default
         transform: translate3d(0, 0, 0)
         visibility: visible
 
-    &.ss-snackbar-default
-        border-left-color: $ss-default
+    @each $name, $color in $ss-colors
+        &.ss-snackbar-#{$name}
+            border-left-color: $color
 
-        .ss-snackbar-icon .ss-icon
-            color: $ss-default
-
-    &.ss-snackbar-success
-        border-left-color: $ss-success
-
-        .ss-snackbar-icon .ss-icon
-            color: $ss-success
-
-    &.ss-snackbar-info
-        border-left-color: $ss-info
-
-        .ss-snackbar-icon .ss-icon
-            color: $ss-info
-
-    &.ss-snackbar-warning
-        border-left-color: $ss-warning
-
-        .ss-snackbar-icon .ss-icon
-            color: $ss-warning
-
-    &.ss-snackbar-danger
-        border-left-color: $ss-danger
-
-        .ss-snackbar-icon .ss-icon
-            color: $ss-danger
+            .ss-snackbar-icon .ss-icon
+                color: $color
 
 .ss-snackbar-body
     flex-grow: 1
