@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .button {
-    @apply .p-5;
+    @apply .py-3 .px-6 .inline-flex .rounded .text-white .items-center .justify-center;
+}
+
+.icon {
+    @apply .w-4 .h-4 .inline-flex .justify-center .items-center .mr-2;
+}
+
+.section {
+    @apply .py-12 .px-6;
+}
+
+.container {
+    @apply .lg:w-1/2 .mx-auto;
 }
