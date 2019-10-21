@@ -4,8 +4,11 @@ module.exports = {
             display: ['Quicksand', 'sans-serif'],
             body: ['Quicksand', 'sans-serif'],
         },
-        colors: {
-            blue: '#3069c5',
+        extend: {
+            colors: {
+                red: '#f42a52',
+                white: '#fff',
+            },
         },
     },
     variants: {},
