@@ -10,8 +10,8 @@
     </head>
     <body class="font-body">
         <section class="section">
-            <div class="container text-center">
-                <h1 class="text-4xl text-red font-medium mb-3">simpleSnackbar.js</h1>
+            <div class="container lg:w-1/2 text-center">
+                <h1 class="text-4xl lg:text-5xl text-red font-medium mb-3">simpleSnackbar.js</h1>
                 <p class="mb-10">A tiny and accessible toast/snackbar ES6 JavaScript plugin.</p>
                 <div class="flex justify-center -m-4">
                     <div class="flex-none p-4">
@@ -29,10 +29,29 @@
                 </div>
             </div>
         </section>
-        <hr>
+        <div class="container lg:w-1/2">
+            <hr class="w-2/3 mx-auto">
+        </div>
         <section class="section">
-            <div class="container text-center">
-                test
+            <div class="container lg:w-1/2 text-center">
+                <h2 class="title">Getting Started</h2>
+                <p>Adding simpleSnackbar.js to your existing project is very easy, just include the compiled CSS and JS files to your HTML document and initialise a snackbar.</p>
+                <p>You can also import the JavaScript if you are using a module bundler such as Webpack.</p>
+                <pre class="bg-gray-800 text-white rounded py-4 px-6 mb-5 text-left"><code>&#x3C;!doctype html&#x3E;
+&#x3C;html lang=&#x22;en&#x22;&#x3E;
+    &#x3C;head&#x3E;
+        &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+        &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&#x22;&#x3E;
+        &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;ie=edge&#x22;&#x3E;
+        &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.css&#x22;&#x3E;
+    &#x3C;/head&#x3E;
+    &#x3C;body&#x3E;
+    &#x3C;/body&#x3E;
+    &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script&#x3E;
+        const snackbar = new simpleSnackbar(&#x27;This is a message!&#x27;).show();
+    &#x3C;/script&#x3E;
+&#x3C;/html&#x3E;</code></pre>
             </div>
         </section>
         <script src="assets/dist/js/main.js"></script>
