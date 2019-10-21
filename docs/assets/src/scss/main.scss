@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+p:not(:last-child) {
+    @apply .mb-6;
+}
+
 .button {
     @apply .py-3 .px-6 .inline-flex .rounded .text-white .items-center .justify-center;
 }
@@ -15,5 +19,9 @@
 }
 
 .container {
-    @apply .lg:w-1/2 .mx-auto;
+    @apply .mx-auto;
+}
+
+.title {
+    @apply .text-2xl .mb-6;
 }
