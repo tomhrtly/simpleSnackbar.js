@@ -1,6 +1,6 @@
 ## [simpleSnackbar.js](https://simplesnackbar.com)
 
-A tiny and accessible notifications ES6 JavaScript plugin built with Flexbox.
+A tiny and accessible toast/snackbar ES6 JavaScript plugin.
 
 ### Status
 
