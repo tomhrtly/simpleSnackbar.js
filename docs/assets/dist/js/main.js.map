@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","sources":["../../src/js/main.js"],"sourcesContent":["import hljs from 'highlight.js/lib/highlight';\n\nhljs.initHighlightingOnLoad();\n"],"names":["hljs","initHighlightingOnLoad"],"mappings":";;;;;CAEAA,IAAI,CAACC,sBAAL;;;;"}

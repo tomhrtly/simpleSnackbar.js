@@ -2,8 +2,13 @@
 	"version": 3,
 	"file": "main.css",
 	"sources": [
-		"../../src/sass/main.sass"
+		"../../src/scss/main.sass",
+		"../../../../node_modules/minireset.css/minireset.sass"
+	],
+	"sourcesContent": [
+		"@import '../../../../node_modules/minireset.css/minireset.sass';\n\n$red: #f42a52;\n\n.section {\n    padding: 3rem 1.5rem; }\n\n.container {\n    flex-grow: 1;\n    margin: 0 auto;\n    position: relative;\n    width: auto; }\n\n.title {\n    color: $red;\n    font-family: 'Quicksand', sans-serif;\n    font-size: 2.5rem;\n    font-weight: 500; }\n\n.text-center {\n    text-align: center; }\n",
+		"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\n// Blocks\nhtml,\nbody,\np,\nol,\nul,\nli,\ndl,\ndt,\ndd,\nblockquote,\nfigure,\nfieldset,\nlegend,\ntextarea,\npre,\niframe,\nhr,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  margin: 0;\n  padding: 0; }\n\n// Headings\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: 100%;\n  font-weight: normal; }\n\n// List\nul {\n  list-style: none; }\n\n// Form\nbutton,\ninput,\nselect,\ntextarea {\n  margin: 0; }\n\n// Box sizing\nhtml {\n  box-sizing: border-box; }\n\n* {\n  &,\n  &::before,\n  &::after {\n    box-sizing: inherit; } }\n\n// Media\nimg,\nvideo {\n  height: auto;\n  max-width: 100%; }\n\n// Iframe\niframe {\n  border: 0; }\n\n// Table\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0;\n  &:not([align]) {\n    text-align: left; } }\n"
 	],
 	"names": [],
-	"mappings": "AAAA,OAAO,CAAP,0BAAO;AACP,OAAO,CAAP,gCAAO;AACP,OAAO,CAAP,+BAAO"
+	"mappings": "ACAA,2EAA2E;AAE3E,AAAA,IAAI;AACJ,IAAI;AACJ,CAAC;AACD,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,UAAU;AACV,MAAM;AACN,QAAQ;AACR,MAAM;AACN,QAAQ;AACR,GAAG;AACH,MAAM;AACN,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE,CAAC;EACD,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;CAAG;;AAGf,AAAA,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE,CAAC;EACD,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,MAAM;CAAG;;AAGxB,AAAA,EAAE,CAAC;EACD,UAAU,EAAE,IAAI;CAAG;;AAGrB,AAAA,MAAM;AACN,KAAK;AACL,MAAM;AACN,QAAQ,CAAC;EACP,MAAM,EAAE,CAAC;CAAG;;AAGd,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAU;CAAG;;AAE3B,AACE,CADD,EAAD,CAAC,AAEE,QAAQ,EAFX,CAAC,AAGE,OAAO,CAAC;EACP,UAAU,EAAE,OAAO;CAAG;;AAG1B,AAAA,GAAG;AACH,KAAK,CAAC;EACJ,MAAM,EAAE,IAAI;EACZ,SAAS,EAAE,IAAI;CAAG;;AAGpB,AAAA,MAAM,CAAC;EACL,MAAM,EAAE,CAAC;CAAG;;AAGd,AAAA,KAAK,CAAC;EACJ,eAAe,EAAE,QAAQ;EACzB,cAAc,EAAE,CAAC;CAAG;;AAEtB,AAAA,EAAE;AACF,EAAE,CAAC;EACD,OAAO,EAAE,CAAC;CAEa;;AAJzB,AAGE,EAHA,AAGC,IAAK,EAAA,AAAA,KAAC,AAAA;AAFT,EAAE,AAEC,IAAK,EAAA,AAAA,KAAC,AAAA,GAAQ;EACb,UAAU,EAAE,IAAI;CAAG;;AD1EvB,AAAA,QAAQ,CAAC;EACL,OAAO,EAAE,WAAW;CAAG;;AAE3B,AAAA,UAAU,CAAC;EACP,SAAS,EAAE,CAAC;EACZ,MAAM,EAAE,MAAM;EACd,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,IAAI;CAAG;;AAElB,AAAA,MAAM,CAAC;EACH,KAAK,EAZH,OAAO;EAaT,WAAW,EAAE,uBAAuB;EACpC,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,GAAG;CAAG;;AAEvB,AAAA,YAAY,CAAC;EACT,UAAU,EAAE,MAAM;CAAG"
 }

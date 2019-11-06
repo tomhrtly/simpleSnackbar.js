@@ -7,9 +7,9 @@
         "css": "npm-run-all css-docs css-main",
         "css-docs": "npm-run-all css-lint-docs css-compile-docs css-minify-docs",
         "css-main": "npm-run-all css-lint-main css-compile-main css-minify-main",
-        "css-compile-docs": "npx tailwind build docs/assets/src/scss/main.scss -o docs/assets/dist/css/main.css",
+        "css-compile-docs": "node-sass --output-style expanded --source-map true --source-map-contents true docs/assets/src/scss/main.sass docs/assets/dist/css/main.css",
         "css-compile-main": "node-sass --output-style expanded --source-map true --source-map-contents true src/simpleSnackbar.sass dist/simpleSnackbar.css",
-        "css-lint-docs": "stylelint 'docs/assets/src/scss/main.scss'",
+        "css-lint-docs": "stylelint 'docs/assets/src/scss/main.sass'",
         "css-lint-main": "stylelint 'src/simpleSnackbar.sass'",
         "css-minify-docs": "cleancss -o docs/assets/dist/css/main.min.css docs/assets/dist/css/main.css",
         "css-minify-main": "cleancss -o dist/simpleSnackbar.min.css dist/simpleSnackbar.css",
@@ -26,9 +26,9 @@
         "js-minify-docs": "terser --compress --comments all --output docs/assets/dist/js/main.min.js docs/assets/dist/js/main.js",
         "js-minify-main": "terser --compress --comments all --output dist/simpleSnackbar.min.js dist/simpleSnackbar.js",
         "watch": "npm-run-all --parallel watch-*",
-        "watch-css-docs": "nodemon --watch docs/assets/src/ --ext sass -exec 'npm run css-docs'",
+        "watch-css-docs": "nodemon --watch docs/assets/src/scss/ --ext sass -exec 'npm run css-docs'",
         "watch-css-main": "nodemon --watch src/ --ext sass --exec 'npm run css-main'",
-        "watch-js-docs": "nodemon --watch docs/assets/src/ --ext js -exec 'npm run js-docs'",
+        "watch-js-docs": "nodemon --watch docs/assets/src/js/ --ext js -exec 'npm run js-docs'",
         "watch-js-main": "nodemon --watch src/ --ext js --exec 'npm run js-main'"
     },
     "repository": {
@@ -60,6 +60,6 @@
         "stylelint-config-recommended": "^2.2.0"
     },
     "dependencies": {
-        "tailwindcss": "^1.1.2"
+        "minireset.css": "0.0.6"
     }
 }
