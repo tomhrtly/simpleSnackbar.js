@@ -1,6 +1,15 @@
 @import '../../../../node_modules/minireset.css/minireset.sass'
 
 $red: #f42a52
+$blue: #4299e1
+$gray: #a0aec0
+$white: #fff
+
+body
+    font-family: 'Quicksand', sans-serif
+
+p:not(:last-child)
+    margin-bottom: 1rem
 
 .section
     padding: 3rem 1.5rem
@@ -8,14 +17,61 @@ $red: #f42a52
 .container
     flex-grow: 1
     margin: 0 auto
+    max-width: 960px
     position: relative
     width: auto
 
 .title
     color: $red
-    font-family: 'Quicksand', sans-serif
     font-size: 2.5rem
     font-weight: 500
+    margin-bottom: 1rem
+
+.columns
+    display: flex
+    margin: -1rem
+
+    &.columns-centered
+        justify-content: center
+
+.column
+    padding: 1rem
+
+    &.column-auto
+        flex: none
+
+    &.column-4
+        width: 33.3333%
+
+.or
+    color: $gray
+    padding-bottom: 1rem
+    padding-top: 1rem
 
 .text-center
     text-align: center
+
+.button
+    align-items: center
+    background-color: $red
+    border-radius: .25rem
+    color: $white
+    display: inline-flex
+    justify-content: center
+    padding: .75rem 1.5rem
+    text-decoration: none
+
+    &.button-blue
+        background-color: $blue
+
+    &.button-full
+        width: 100%
+
+code[class*=language-],
+pre[class*=language-]
+    border-radius: 6px
+    font-family: monospace
+    font-size: medium
+
+pre[class*=language-]
+    padding: 1.25rem 1.5rem
