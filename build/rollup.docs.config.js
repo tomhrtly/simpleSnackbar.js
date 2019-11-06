@@ -4,7 +4,7 @@ export default {
     input: 'docs/assets/src/js/main.js',
     output: {
         file: 'docs/assets/dist/js/main.js',
-        name: 'simpleSnackbar-docs',
+        name: 'simpleSnackbar_docs',
         format: 'iife',
         sourceMap: 'inline',
     },
