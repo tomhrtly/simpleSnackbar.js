@@ -43,6 +43,9 @@ p:not(:last-child)
     &.column-4
         width: 33.3333%
 
+    &.column-3
+        width: 25%
+
 .or
     color: $gray
     padding-bottom: 1rem
@@ -53,7 +56,7 @@ p:not(:last-child)
 
 .button
     align-items: center
-    background-color: $red
+    background-color: $gray
     border-radius: .25rem
     color: $white
     display: inline-flex
@@ -61,8 +64,29 @@ p:not(:last-child)
     padding: .75rem 1.5rem
     text-decoration: none
 
+    &:hover
+        background-color: darken($gray, 5)
+
+    &:focus
+        box-shadow: 0 0 0 0.125em rgba($gray, .25)
+
+    &.button-red
+        background-color: $red
+
+        &:hover
+            background-color: darken($red, 5)
+
+        &:focus
+            box-shadow: 0 0 0 0.125em rgba($red, .25)
+
     &.button-blue
         background-color: $blue
+
+        &:hover
+            background-color: darken($blue, 5)
+
+        &:focus
+            box-shadow: 0 0 0 0.125em rgba($blue, .25)
 
     &.button-full
         width: 100%
