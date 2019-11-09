@@ -12,7 +12,7 @@ A tiny and accessible toast/snackbar ES6 JavaScript plugin.
 
 ### Getting Started
 
-* [Download the latest release.](https://github.com/tomhrtly/simplesnackbar.js/archive/v1.0.0.zip)
+* [Download the latest release.](https://github.com/tomhrtly/simpleSnackbar.js/releases/download/v1.0.0/simpleSnackbar-1.0.0.zip)
 * Clone the repo: `git clone https://github.com/tomhrtly/simpleSnackbar.js.git`
 * Install with [npm](https://www.npmjs.com/): `npm install simplesnackbarjs`
 
