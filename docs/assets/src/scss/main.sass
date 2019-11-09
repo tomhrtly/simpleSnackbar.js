@@ -20,6 +20,13 @@ $white: #fff
     overflow: visible
     text-transform: none
 
+a
+    color: $blue
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
 body
     font-family: 'Quicksand', sans-serif
 
@@ -34,9 +41,7 @@ hr
 code
     background-color: whitesmoke
     color: $red
-    font-size: 0.875em
-    font-weight: normal
-    padding: 0.25em 0.5em 0.25em
+    padding: .25rem .5rem
 
 .section
     padding: 3rem 1.5rem
@@ -142,6 +147,17 @@ pre[class*=language-]
     overflow: auto
     overflow-y: hidden
     max-width: 100%
+
+.icon
+    align-items: center
+    display: inline-flex
+    height: 1rem
+    justify-content: center
+    width: 1rem
+
+    svg
+        height: 100%
+        width: 100%
 
 @media screen and (min-width: 769px)
     .column
