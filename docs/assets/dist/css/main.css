@@ -80,13 +80,12 @@ th:not([align]) {
   text-align: left;
 }
 
-/*
+/*!
  * simpleSnackbar.js v1.0.0
  * https://github.com/tomhrtly/simpleSnackbar.js
  *
  * Copyright 2019 Tom Hartley
  * Released under the MIT license
- *
  */
 * {
   box-sizing: border-box;
