@@ -25,7 +25,7 @@
                         <a href="" class="button button-red button-full">Download</a>
                     </div>
                     <div class="column column-3">
-                        <a href="" class="button button-blue button-full">Demo</a>
+                        <button class="button button-blue button-full demo-js">Demo</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,21 @@
                         <h2 class="subtitle">Getting Started</h2>
                         <p>Adding simpleSnackbar.js to your existing project is very easy, just include the compiled CSS and JS files to your HTML document and initialise a snackbar.</p>
                         <p>You can also import the JavaScript if you are using a module bundler such as Webpack.</p>
-                        <pre><code class="language-css">p { color: red }</code></pre>
+                        <pre><code class="language-html">&#x3C;!doctype html&#x3E;
+&#x3C;html lang=&#x22;en&#x22;&#x3E;
+    &#x3C;head&#x3E;
+        &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+        &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&#x22;&#x3E;
+        &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;ie=edge&#x22;&#x3E;
+        &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.css&#x22;&#x3E;
+    &#x3C;/head&#x3E;
+    &#x3C;body&#x3E;
+    &#x3C;/body&#x3E;
+    &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script&#x3E;
+        const snackbar = new simpleSnackbar(&#x27;This is a message!&#x27;).show();
+    &#x3C;/script&#x3E;
+&#x3C;/html&#x3E;</code></pre>
                     </div>
                 </div>
             </div>
@@ -107,5 +121,6 @@
             </div>
         </section>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/prism.min.js"></script>
+        <script src="assets/dist/js/main.min.js"></script>
     </body>
 </html>

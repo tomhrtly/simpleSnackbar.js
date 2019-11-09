@@ -1,10 +1,24 @@
 @import '../../../../node_modules/minireset.css/minireset.sass'
+@import '../../../../src/simpleSnackbar'
 
 $red: #f42a52
 $blue: #4299e1
 $gray: #a0aec0
 $light-gray: #eee
 $white: #fff
+
+=button
+    background-color: transparent
+    border: none
+    cursor: pointer
+    font-family: inherit
+    font-size: 100%
+    line-height: 1.15
+    margin: 0
+    padding: 0
+    outline: none
+    overflow: visible
+    text-transform: none
 
 body
     font-family: 'Quicksand', sans-serif
@@ -58,6 +72,7 @@ hr
     text-align: center
 
 .button
+    +button
     align-items: center
     background-color: $gray
     border-radius: .25rem
