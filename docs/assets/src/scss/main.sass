@@ -73,8 +73,14 @@ code
         justify-content: center
 
 .column
-    padding: 1rem
-    width: 100%
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 1
+    max-width: 100%
+    padding: .75rem
+
+    &.column-auto
+        flex: none
 
 .or
     color: $gray
@@ -162,14 +168,14 @@ pre[class*=language-]
 
 @media screen and (min-width: 769px)
     .column
-        &.column-auto
-            flex: none
-
         &.column-8
+            flex: none
             width: 66.6666%
 
         &.column-4
+            flex: none
             width: 33.3333%
 
         &.column-3
+            flex: none
             width: 25%
