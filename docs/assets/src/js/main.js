@@ -12,7 +12,7 @@ const snackbars = [
         type: 'success',
     },
     {
-        message: 'Isn\'t this tiny library awesome?',
+        message: 'Isn\'t this tiny plugin awesome?',
         type: 'info',
     },
     {
