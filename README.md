@@ -8,6 +8,8 @@ A tiny and accessible toast/snackbar ES6 JavaScript plugin.
 [![CSS gzip size](https://img.badgesize.io/tomhrtly/simpleSnackbar.js/master/dist/simpleSnackbar.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/tomhrtly/simpleSnackbar.js/tree/master/dist/simpleSnackbar.min.css)
 [![JS gzip size](https://img.badgesize.io/tomhrtly/simpleSnackbar.js/master/dist/simpleSnackbar.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/tomhrtly/simpleSnackbar.js/tree/master/dist/simpleSnackbar.min.js)
 [![downloads](https://img.shields.io/npm/dm/simplesnackbarjs.svg)](https://npmjs.com/package/simplesnackbarjs)
+[![Dependencies Status](https://david-dm.org/tomhrtly/simpleSnackbar.js/status.svg)](https://david-dm.org/tomhrtly/simpleSnackbar.js)
+[![devDependency Status](https://david-dm.org/tomhrtly/simpleSnackbar.js/dev-status.svg)](https://david-dm.org/tomhrtly/simpleSnackbar.js?type=dev)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5deb4668-f530-42d2-af37-257dd2da0001/deploy-status)](https://app.netlify.com/sites/infallible-tereshkova-4c58d5/deploys)
 
 ### Getting Started
