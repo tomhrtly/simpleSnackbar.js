@@ -8,11 +8,11 @@ A tiny and accessible toast/snackbar ES6 JavaScript plugin.
 [![CSS gzip size](https://img.badgesize.io/tomhrtly/simpleSnackbar.js/master/dist/simpleSnackbar.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/tomhrtly/simpleSnackbar.js/tree/master/dist/simpleSnackbar.min.css)
 [![JS gzip size](https://img.badgesize.io/tomhrtly/simpleSnackbar.js/master/dist/simpleSnackbar.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/tomhrtly/simpleSnackbar.js/tree/master/dist/simpleSnackbar.min.js)
 [![downloads](https://img.shields.io/npm/dm/simplesnackbarjs.svg)](https://npmjs.com/package/simplesnackbarjs)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bae9e38a-d7f0-4bfb-baed-e25ca02385e6/deploy-status)](https://app.netlify.com/sites/flamboyant-swanson-358ad2/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5deb4668-f530-42d2-af37-257dd2da0001/deploy-status)](https://app.netlify.com/sites/infallible-tereshkova-4c58d5/deploys)
 
 ### Getting Started
 
-* [Download the latest release.](https://github.com/tomhrtly/simplesnackbar.js/archive/v0.1.0.zip)
+* [Download the latest release.](https://github.com/tomhrtly/simplesnackbar.js/archive/v1.0.0.zip)
 * Clone the repo: `git clone https://github.com/tomhrtly/simpleSnackbar.js.git`
 * Install with [npm](https://www.npmjs.com/): `npm install simplesnackbarjs`
 
