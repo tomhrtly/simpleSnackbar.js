@@ -48,8 +48,7 @@
         &#x3C;meta http-equiv=&#x22;X-UA-Compatible&#x22; content=&#x22;ie=edge&#x22;&#x3E;
         &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.css&#x22;&#x3E;
     &#x3C;/head&#x3E;
-    &#x3C;body&#x3E;
-    &#x3C;/body&#x3E;
+    &#x3C;body&#x3E;&#x3C;/body&#x3E;
     &#x3C;script src=&#x22;https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script&#x3E;
         const snackbar = new simpleSnackbar(&#x27;This is a message!&#x27;).show();
@@ -124,6 +123,7 @@
                                         <td>String</td>
                                         <td><code>'default'</code></td>
                                         <td>Defines the type of snackbar to initialise. Available types are <code>'default'</code>, <code>'success'</code>, <code>'info'</code>, <code>'warning'</code>, <code>'danger'</code></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -132,6 +132,50 @@
                 </div>
             </div>
         </section>
+        <div class="container">
+            <hr>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="columns columns-centered">
+                    <div class="column column-8">
+                        <h2 class="subtitle text-center">Methods</h2>
+                        <p>All methods return the instance of the snackbar you are calling to enable method chaining if needed.</p>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>dispose</td>
+                                        <td>This method removes the snackbar from the DOM when called.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hide</td>
+                                        <td>This method hides the snackbar by moving it out of the viewport when called.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>show</td>
+                                        <td>This method moves the snackbar into the viewport when called.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>toggle</td>
+                                        <td>This method toggles between the <code>hide</code> and <code>show</code> states.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <hr>
+        </div>
         <section class="section">
             <div class="container">
                 <div class="columns columns-centered">
@@ -142,7 +186,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Event Type</th>
+                                        <th>Event</th>
                                         <th>Description</th>
                                     </tr>
                                 </thead>
