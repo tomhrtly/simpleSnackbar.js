@@ -31,6 +31,13 @@ hr
     border: none
     height: 1px
 
+code
+    background-color: whitesmoke
+    color: $red
+    font-size: 0.875em
+    font-weight: normal
+    padding: 0.25em 0.5em 0.25em
+
 .section
     padding: 3rem 1.5rem
 
@@ -117,6 +124,24 @@ pre[class*=language-]
 
 pre[class*=language-]
     padding: 1.25rem 1.5rem
+
+.table
+    td,
+    th
+        border: 1px solid #dbdbdb
+        border-width: 0 0 1px
+        padding: .5em .75em
+        vertical-align: top
+
+    thead td,
+    thead th
+        border-width: 0 0 2px
+
+.table-container
+    -webkit-overflow-scrolling: touch
+    overflow: auto
+    overflow-y: hidden
+    max-width: 100%
 
 @media screen and (min-width: 769px)
     .column
