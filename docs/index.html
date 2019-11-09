@@ -67,55 +67,67 @@
                 <div class="columns columns-centered">
                     <div class="column column-8">
                         <h2 class="subtitle text-center">Options</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    <th>Example</th>
-                                </tr>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Default</th>
+                                        <th>Description</th>
+                                        <th>Example</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><code>autohide</code></td>
-                                    <td>Boolean</td>
-                                    <td><code>true</code></td>
-                                    <td>Determines whether the snackbar will automatically hide after being shown for the set duration.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><code>close</code></td>
-                                    <td>Boolean</td>
-                                    <td><code>true</code></td>
-                                    <td>Determines whether a close button is shown on the snackbar which the user can click to hide it.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><code>icon</code></td>
-                                    <td>Boolean</td>
-                                    <td><code>true</code></td>
-                                    <td>Determines whether an icon is placed on the snackbar for a clearer UI.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><code>icons</code></td>
-                                    <td>Object</td>
-                                    <td><code>{
-                                        success: '',
-                                        info: '',
-                                        warning: '',
-                                        danger: '',
-                                        }</code></td>
-                                    <td>Defines the SVGs for the icons, out of the box we use <a href="https://fontawesome.com/">Font Awesome</a> icons.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr>
+                                        <td><code>autohide</code></td>
+                                        <td>Boolean</td>
+                                        <td><code>true</code></td>
+                                        <td>Determines whether the snackbar will automatically hide after being shown for the set duration.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>close</code></td>
+                                        <td>Boolean</td>
+                                        <td><code>true</code></td>
+                                        <td>Determines whether a close button is shown on the snackbar which the user can click to hide it.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>icon</code></td>
+                                        <td>Boolean</td>
+                                        <td><code>true</code></td>
+                                        <td>Determines whether an icon is placed on the snackbar for a clearer UI.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>icons</code></td>
+                                        <td>Object</td>
+                                        <td><code>{
+                                            success: '',
+                                            info: '',
+                                            warning: '',
+                                            danger: '',
+                                            }</code></td>
+                                        <td>Defines the SVGs for the icons, out of the box we use <a href="https://fontawesome.com/">Font Awesome</a> icons.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>transitionSpeed</code></td>
+                                        <td>Number</td>
+                                        <td><code>250</code></td>
+                                        <td>Defines the speed of the transition in milliseconds</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>type</code></td>
+                                        <td>String</td>
+                                        <td><code>'default'</code></td>
+                                        <td>Defines the type of snackbar to initialise. Available types are <code>'default'</code>, <code>'success'</code>, <code>'info'</code>, <code>'warning'</code>, <code>'danger'</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
