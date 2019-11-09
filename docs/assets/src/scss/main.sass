@@ -3,6 +3,7 @@
 $red: #f42a52
 $blue: #4299e1
 $gray: #a0aec0
+$light-gray: #eee
 $white: #fff
 
 body
@@ -10,6 +11,11 @@ body
 
 p:not(:last-child)
     margin-bottom: 1rem
+
+hr
+    background-color: $light-gray
+    border: none
+    height: 1px
 
 .section
     padding: 3rem 1.5rem
@@ -21,11 +27,17 @@ p:not(:last-child)
     position: relative
     width: auto
 
-.title
+.title,
+.subtitle
     color: $red
-    font-size: 2.5rem
     font-weight: 500
     margin-bottom: 1rem
+
+.title
+    font-size: 2.5rem
+
+.subtitle
+    font-size: 1.75rem
 
 .columns
     display: flex
@@ -36,15 +48,6 @@ p:not(:last-child)
 
 .column
     padding: 1rem
-
-    &.column-auto
-        flex: none
-
-    &.column-4
-        width: 33.3333%
-
-    &.column-3
-        width: 25%
 
 .or
     color: $gray
@@ -99,3 +102,17 @@ pre[class*=language-]
 
 pre[class*=language-]
     padding: 1.25rem 1.5rem
+
+@media screen and (min-width: 769px)
+    .column
+        &.column-auto
+            flex: none
+
+        &.column-8
+            width: 66.6666%
+
+        &.column-4
+            width: 33.3333%
+
+        &.column-3
+            width: 25%
