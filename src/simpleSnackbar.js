@@ -10,16 +10,16 @@
 
 class simpleSnackbar {
     constructor(message, options) {
-        this.container = '';
-        this.customEvents = {
-            disposed: new CustomEvent('disposed'),
-            hide: new CustomEvent('hide'),
-            hidden: new CustomEvent('hidden'),
-            show: new CustomEvent('show'),
-            shown: new CustomEvent('shown'),
+        this._container = '';
+        this._customEvents = {
+            disposed: new CustomEvent('disposed.ss'),
+            hide: new CustomEvent('hide.ss'),
+            hidden: new CustomEvent('hidden.ss'),
+            show: new CustomEvent('show.ss'),
+            shown: new CustomEvent('shown.ss'),
         };
 
-        this.defaults = {
+        this._defaults = {
             autohide: true,
             close: true,
             icon: true,
@@ -33,11 +33,11 @@ class simpleSnackbar {
             type: 'default',
         };
 
-        this.element = '';
-        this.id = Math.floor(Math.random() * 1000000);
-        this.message = message;
-        this.options = simpleSnackbar.extend(this.defaults, options);
-        this.timer = null;
+        this._element = '';
+        this._id = Math.floor(Math.random() * 1000000);
+        this._message = message;
+        this._options = simpleSnackbar.extend(this._defaults, options);
+        this._timer = null;
 
         if (!document.querySelector('.ss-snackbars')) {
             const snackbars = document.createElement('div');
@@ -46,61 +46,63 @@ class simpleSnackbar {
             snackbars.setAttribute('aria-atomic', 'true');
 
             document.querySelector('body').append(snackbars);
-            this.container = snackbars;
+            this._container = snackbars;
         } else {
-            this.container = document.querySelector('.ss-snackbars');
+            this._container = document.querySelector('.ss-snackbars');
         }
 
-        this.init();
+        this._init();
     }
 
-    close() {
-        if (this.options.close) {
+    _close() {
+        if (this._options.close) {
             const close = document.createElement('button');
             close.classList.add('ss-close');
             close.innerHTML = '<span class="ss-icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg></span>';
 
-            this.element.append(close);
+            this._element.append(close);
         }
     }
 
     dispose() {
-        this.element.parentNode.removeChild(this.element);
-        this.element.dispatchEvent(this.customEvents.disposed);
+        this._element.parentNode.removeChild(this._element);
+        this._element.dispatchEvent(this._customEvents.disposed);
+
+        return this;
     }
 
-    events() {
+    _events() {
         let pause = false;
 
         document.addEventListener('visibilitychange', () => {
             pause = document.visibilityState !== 'visible';
         });
 
-        this.element.addEventListener('mouseenter', () => { pause = true; });
-        this.element.addEventListener('mouseleave', () => { pause = false; });
-        this.element.addEventListener('focusin', () => { pause = true; });
-        this.element.addEventListener('focusout', () => { pause = false; });
+        this._element.addEventListener('mouseenter', () => { pause = true; });
+        this._element.addEventListener('mouseleave', () => { pause = false; });
+        this._element.addEventListener('focusin', () => { pause = true; });
+        this._element.addEventListener('focusout', () => { pause = false; });
 
-        if (this.options.close) {
-            this.element.querySelector('.ss-close').addEventListener('click', () => {
+        if (this._options.close) {
+            this._element.querySelector('.ss-close').addEventListener('click', () => {
                 this.hide();
             });
         }
 
-        if (this.options.autohide) {
-            if (this.timer) {
-                clearInterval(this.timer);
+        if (this._options.autohide) {
+            if (this._timer) {
+                clearInterval(this._timer);
             }
 
-            this.timer = setInterval(() => {
+            this._timer = setInterval(() => {
                 if (!pause) {
                     this.hide();
                 }
             }, 5000);
         }
 
-        this.element.onfocus = () => {
-            if (document.activeElement === this.element) {
+        this._element.onfocus = () => {
+            if (document.activeElement === this._element) {
                 document.onkeyup = (e) => {
                     if (e.key === 'Escape') {
                         this.hide();
@@ -109,53 +111,53 @@ class simpleSnackbar {
             }
         };
 
-        this.element.onblur = () => {
+        this._element.onblur = () => {
             document.onkeyup = () => {};
         };
 
-        this.element.addEventListener('show', () => {
-            if (this.container.children.length) {
-                this.container.classList.add('ss-snackbars-active');
+        this._element.addEventListener('show', () => {
+            if (this._container.children.length) {
+                this._container.classList.add('ss-snackbars-active');
             }
         });
 
-        this.element.addEventListener('disposed', () => {
-            if (!this.container.children.length) {
-                this.container.classList.remove('ss-snackbars-active');
+        this._element.addEventListener('disposed', () => {
+            if (!this._container.children.length) {
+                this._container.classList.remove('ss-snackbars-active');
             }
         });
     }
 
     hide() {
-        if (this.element.classList.contains('ss-snackbar-active')) {
-            this.element.classList.remove('ss-snackbar-active');
+        if (this._element.classList.contains('ss-snackbar-active')) {
+            this._element.classList.remove('ss-snackbar-active');
 
             setTimeout(() => {
-                this.element.style.display = 'none';
-                this.element.dispatchEvent(this.customEvents.hidden);
+                this._element.style.display = 'none';
+                this._element.dispatchEvent(this._customEvents.hidden);
                 this.dispose();
-            }, this.options.transitionSpeed);
+            }, this._options.transitionSpeed);
 
-            this.element.dispatchEvent(this.customEvents.hide);
+            this._element.dispatchEvent(this._customEvents.hide);
         }
 
         return this;
     }
 
-    icon() {
-        if (this.options.icon) {
-            if (this.options.type !== 'default') {
+    _icon() {
+        if (this._options.icon) {
+            if (this._options.type !== 'default') {
                 const icon = document.createElement('div');
 
                 icon.classList.add('ss-snackbar-icon');
-                icon.innerHTML = `<span class="ss-icon">${this.options.icons[this.options.type]}</span>`;
+                icon.innerHTML = `<span class="ss-icon">${this._options.icons[this._options.type]}</span>`;
 
-                this.element.prepend(icon);
+                this._element.prepend(icon);
             }
         }
     }
 
-    init() {
+    _init() {
         const snackbars = document.querySelector('.ss-snackbars');
         const snackbar = document.createElement('div');
 
@@ -164,39 +166,39 @@ class simpleSnackbar {
         snackbar.setAttribute('role', 'alert');
         snackbar.setAttribute('aria-live', 'assertive');
         snackbar.setAttribute('aria-atomic', 'true');
-        snackbar.setAttribute('data-id', this.id.toString());
-        snackbar.classList.add(`ss-snackbar-${this.options.type}`);
-        snackbar.style.transition = `all ${this.options.transitionSpeed}ms ease-in-out 0s`;
-        snackbar.innerHTML = `<div class="ss-snackbar-body">${this.message}</div>`;
-        this.element = snackbar;
+        snackbar.setAttribute('data-id', this._id.toString());
+        snackbar.classList.add(`ss-snackbar-${this._options.type}`);
+        snackbar.style.transition = `all ${this._options.transitionSpeed}ms ease-in-out 0s`;
+        snackbar.innerHTML = `<div class="ss-snackbar-body">${this._message}</div>`;
+        this._element = snackbar;
 
         snackbars.prepend(snackbar);
 
-        this.icon();
-        this.close();
-        this.events();
+        this._icon();
+        this._close();
+        this._events();
     }
 
     show() {
-        if (!this.element.classList.contains('ss-snackbar-active')) {
-            this.element.style.display = '';
+        if (!this._element.classList.contains('ss-snackbar-active')) {
+            this._element.style.display = '';
 
             setTimeout(() => {
-                this.element.classList.add('ss-snackbar-active');
+                this._element.classList.add('ss-snackbar-active');
 
                 setTimeout(() => {
-                    this.element.dispatchEvent(this.customEvents.shown);
-                }, this.options.transitionSpeed);
+                    this._element.dispatchEvent(this._customEvents.shown);
+                }, this._options.transitionSpeed);
             }, 100);
 
-            this.element.dispatchEvent(this.customEvents.show);
+            this._element.dispatchEvent(this._customEvents.show);
         }
 
         return this;
     }
 
     toggle() {
-        if (this.element.classList.contains('ss-snackbar-active')) {
+        if (this._element.classList.contains('ss-snackbar-active')) {
             this.hide();
         } else {
             this.show();
