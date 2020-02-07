@@ -38,13 +38,13 @@ var simpleSnackbar = (function () {
     function simpleSnackbar(message, options) {
       _classCallCheck(this, simpleSnackbar);
 
-      this.container = '';
+      this._container = '';
       this.customEvents = {
-        disposed: new CustomEvent('disposed'),
-        hide: new CustomEvent('hide'),
-        hidden: new CustomEvent('hidden'),
-        show: new CustomEvent('show'),
-        shown: new CustomEvent('shown')
+        disposed: new CustomEvent('disposed.ss'),
+        hide: new CustomEvent('hide.ss'),
+        hidden: new CustomEvent('hidden.ss'),
+        show: new CustomEvent('show.ss'),
+        shown: new CustomEvent('shown.ss')
       };
       this.defaults = {
         autohide: true,
@@ -71,17 +71,17 @@ var simpleSnackbar = (function () {
         snackbars.setAttribute('aria-live', 'polite');
         snackbars.setAttribute('aria-atomic', 'true');
         document.querySelector('body').append(snackbars);
-        this.container = snackbars;
+        this._container = snackbars;
       } else {
-        this.container = document.querySelector('.ss-snackbars');
+        this._container = document.querySelector('.ss-snackbars');
       }
 
-      this.init();
+      this._init();
     }
 
     _createClass(simpleSnackbar, [{
-      key: "close",
-      value: function close() {
+      key: "_close",
+      value: function _close() {
         if (this.options.close) {
           var close = document.createElement('button');
           close.classList.add('ss-close');
@@ -96,8 +96,8 @@ var simpleSnackbar = (function () {
         this.element.dispatchEvent(this.customEvents.disposed);
       }
     }, {
-      key: "events",
-      value: function events() {
+      key: "_events",
+      value: function _events() {
         var _this = this;
 
         var pause = false;
@@ -150,13 +150,13 @@ var simpleSnackbar = (function () {
         };
 
         this.element.addEventListener('show', function () {
-          if (_this.container.children.length) {
-            _this.container.classList.add('ss-snackbars-active');
+          if (_this._container.children.length) {
+            _this._container.classList.add('ss-snackbars-active');
           }
         });
         this.element.addEventListener('disposed', function () {
-          if (!_this.container.children.length) {
-            _this.container.classList.remove('ss-snackbars-active');
+          if (!_this._container.children.length) {
+            _this._container.classList.remove('ss-snackbars-active');
           }
         });
       }
@@ -180,8 +180,8 @@ var simpleSnackbar = (function () {
         return this;
       }
     }, {
-      key: "icon",
-      value: function icon() {
+      key: "_icon",
+      value: function _icon() {
         if (this.options.icon) {
           if (this.options.type !== 'default') {
             var icon = document.createElement('div');
@@ -192,8 +192,8 @@ var simpleSnackbar = (function () {
         }
       }
     }, {
-      key: "init",
-      value: function init() {
+      key: "_init",
+      value: function _init() {
         var snackbars = document.querySelector('.ss-snackbars');
         var snackbar = document.createElement('div');
         snackbar.classList.add('ss-snackbar');
@@ -207,9 +207,12 @@ var simpleSnackbar = (function () {
         snackbar.innerHTML = "<div class=\"ss-snackbar-body\">".concat(this.message, "</div>");
         this.element = snackbar;
         snackbars.prepend(snackbar);
-        this.icon();
-        this.close();
-        this.events();
+
+        this._icon();
+
+        this._close();
+
+        this._events();
       }
     }, {
       key: "show",
